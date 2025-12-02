@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import confetti from 'canvas-confetti';
 import { Calculator, Info, AlertCircle, IndianRupee, Clock, Users, Train, Shield } from 'lucide-react';
 
-// Celebration trigger
+// Celebration function
 const triggerCelebration = () => {
-  // Play sound
+  // play sound
   const audio = new Audio('/success.mp3');
   audio.play().catch(() => {});
 
-  // Confetti blast
+  // confetti blast
   confetti({
     particleCount: 160,
     spread: 90,
@@ -31,6 +31,9 @@ export default function IRCTCRefundCalculator() {
   });
 
   const [result, setResult] = useState(null);
+
+  // SCROLL TARGET FOR THE RESULTS SECTION
+  const resultRef = useRef(null);
 
   const classOptions = [
     { value: 'AC1_EXE', label: 'AC First Class / Executive Class' },
@@ -83,10 +86,10 @@ export default function IRCTCRefundCalculator() {
     let breakdown = {};
     let message = '';
 
+    // Tatkal CNF – full non-refundable
     if (isTatkal && ticketStatus === 'CNF') {
       const netRefund = 0;
 
-      // Celebration (if ever netRefund >= 50%)
       if ((netRefund / fare) * 100 >= 50) triggerCelebration();
 
       setResult({
@@ -97,12 +100,19 @@ export default function IRCTCRefundCalculator() {
         netRefund,
         message: 'Confirmed Tatkal tickets are non-refundable as per IRCTC rules.'
       });
+
+      // Auto-scroll
+      setTimeout(() => {
+        resultRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 200);
+
       return;
     }
 
+    // WL & RAC logic
     if (ticketStatus === 'RAC' || ticketStatus === 'WL') {
       const clerkage = 60 * numPassengers;
-      
+
       if (ticketStatus === 'WL') {
         message = 'Note: If ticket remains WL after chart preparation, full refund is automatic. This calculation is for manual cancellation.';
       }
@@ -122,7 +132,6 @@ export default function IRCTCRefundCalculator() {
 
       const netRefund = Math.max(0, fare - totalDeduction);
 
-      // Celebration trigger
       if ((netRefund / fare) * 100 >= 50) triggerCelebration();
 
       setResult({
@@ -134,10 +143,15 @@ export default function IRCTCRefundCalculator() {
         message,
         timeDiff: timeDiffMinutes
       });
+
+      setTimeout(() => {
+        resultRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 200);
+
       return;
     }
 
-    // Main CNF cancellation rules
+    // Main CNF logic
     const minCharge = getMinCharge(travelClass);
 
     if (timeDiffHours > 48) {
@@ -161,11 +175,8 @@ export default function IRCTCRefundCalculator() {
     totalDeduction = (cancellationChargePerPassenger * numPassengers) + nonRefundable;
     const netRefund = Math.max(0, fare - totalDeduction);
 
-    // 🎉 Celebration when refund ≥ 50%
     const refundPercentage = (netRefund / fare) * 100;
-    if (refundPercentage >= 50) {
-      triggerCelebration();
-    }
+    if (refundPercentage >= 50) triggerCelebration();
 
     breakdown.minCharge = minCharge;
     breakdown.perPassengerCharge = cancellationChargePerPassenger.toFixed(2);
@@ -179,6 +190,10 @@ export default function IRCTCRefundCalculator() {
       message: '',
       timeDiff: timeDiffHours
     });
+
+    setTimeout(() => {
+      resultRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 200);
   };
 
   const handleInputChange = (e) => {
@@ -205,7 +220,7 @@ export default function IRCTCRefundCalculator() {
     setResult(null);
   };
 
-  return (
+    return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-6 shadow-lg">
@@ -410,7 +425,7 @@ export default function IRCTCRefundCalculator() {
                     value={formData.nonRefundableFees}
                     onChange={handleInputChange}
                     placeholder="e.g., Service/Convenience charges"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus-border-orange-500 transition"
                   />
                 </div>
                 <div className="flex items-end pb-2">
@@ -449,7 +464,7 @@ export default function IRCTCRefundCalculator() {
 
         {/* Results Section */}
         {result && (
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden">
+          <div ref={resultRef} className="bg-white rounded-xl shadow-xl overflow-hidden">
             <div className="bg-gradient-to-r from-green-500 to-green-600 px-6 py-4">
               <h2 className="text-xl font-bold text-white flex items-center gap-2">
                 <IndianRupee className="w-6 h-6" />
@@ -534,9 +549,7 @@ export default function IRCTCRefundCalculator() {
                 {result.nonRefundableFees > 0 && (
                   <div className="flex justify-between items-center py-4 px-4 bg-orange-50 rounded-lg">
                     <span className="font-semibold text-gray-700">Non-Refundable Fees</span>
-                    <div className="flex items-start gap-2">
                     <span className="text-orange-600">- ₹{result.nonRefundableFees.toFixed(2)}</span>
-                  </div>
                   </div>
                 )}
 
@@ -560,29 +573,29 @@ export default function IRCTCRefundCalculator() {
           </h3>
           <div className="space-y-3 text-sm text-gray-700 leading-relaxed">
             <p>
-              <strong>1. Not Affiliated with IRCTC:</strong> This calculator is an independent tool and is NOT associated with, endorsed by, or affiliated with Indian Railway Catering and Tourism Corporation (IRCTC), Indian Railways, or any government entity. This is a third-party informational tool only.
+              <strong>1. Not Affiliated with IRCTC:</strong> This calculator is an independent tool and is NOT associated with, endorsed by, or affiliated with IRCTC, Indian Railways, or any government entity.
             </p>
             <p>
-              <strong>2. Estimation Only:</strong> The refund amount calculated here is an estimate based on publicly available IRCTC refund rules and regulations. The actual refund amount may vary and is subject to IRCTC's official processing and verification.
+              <strong>2. Estimation Only:</strong> The refund amount calculated here is an estimate based on publicly available IRCTC refund rules.
             </p>
             <p>
-              <strong>3. Rule Changes:</strong> Railway refund rules and policies may change without notice. While we strive to keep the calculator updated with the latest rules, there may be delays in reflecting recent policy changes. Always verify with official IRCTC sources.
+              <strong>3. Rule Changes:</strong> Policies may change without notice. Verify any recent rule updates.
             </p>
             <p>
-              <strong>4. Special Circumstances:</strong> This calculator does not account for special circumstances, promotional offers, festive season rules, pandemic-related modifications, or any other exceptional conditions that may affect refund calculations.
+              <strong>4. Special Circumstances:</strong> This tool does not cover special rule conditions.
             </p>
             <p>
-              <strong>5. No Liability:</strong> We do not accept any liability for discrepancies between the calculated estimate and the actual refund amount processed by IRCTC. Users should verify all details with IRCTC before making cancellation decisions.
+              <strong>5. No Liability:</strong> We do not accept any responsibility for differences from the actual refund.
             </p>
             <p>
-              <strong>6. Official Verification Required:</strong> For the exact and final refund amount, please refer to the official IRCTC website (www.irctc.co.in) or contact IRCTC customer support directly.
+              <strong>6. Official Verification Required:</strong> Final confirmations should be checked from official sources.
             </p>
           </div>
         </div>
 
         {/* Footer */}
         <div className="mt-8 text-center text-sm text-gray-600">
-          <p>For official information, visit <a href="https://www.irctc.co.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-700 font-semibold underline">www.irctc.co.in</a></p>
+          <p>For official info, visit <a href="https://www.irctc.co.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-700 font-semibold underline">IRCTC Website</a></p>
           <p className="mt-2">© 2025 Rail Refund Calculator - A whocodes.in venture</p>
         </div>
       </div>
