@@ -553,7 +553,7 @@ export default function IRCTCRefundCalculator() {
         {/* Footer */}
         <div className="mt-8 text-center text-sm text-gray-600">
           <p>For official information, visit <a href="https://www.irctc.co.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-700 font-semibold underline">www.irctc.co.in</a></p>
-          <p className="mt-2">© 2024 Rail Refund Calculator - An Independent Tool</p>
+          <p className="mt-2">© 2025 Rail Refund Calculator - A whocodes.in venture</p>
         </div>
       </div>
     </div>
