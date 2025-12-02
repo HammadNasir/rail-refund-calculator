@@ -1,5 +1,20 @@
 import React, { useState } from 'react';
+import confetti from 'canvas-confetti';
 import { Calculator, Info, AlertCircle, IndianRupee, Clock, Users, Train, Shield } from 'lucide-react';
+
+// Celebration trigger
+const triggerCelebration = () => {
+  // Play sound
+  const audio = new Audio('/success.mp3');
+  audio.play().catch(() => {});
+
+  // Confetti blast
+  confetti({
+    particleCount: 160,
+    spread: 90,
+    origin: { y: 0.6 }
+  });
+};
 
 export default function IRCTCRefundCalculator() {
   const [formData, setFormData] = useState({
@@ -69,12 +84,17 @@ export default function IRCTCRefundCalculator() {
     let message = '';
 
     if (isTatkal && ticketStatus === 'CNF') {
+      const netRefund = 0;
+
+      // Celebration (if ever netRefund >= 50%)
+      if ((netRefund / fare) * 100 >= 50) triggerCelebration();
+
       setResult({
         totalFare: fare,
         totalCancellationCharges: fare,
         breakdown: { message: 'Confirmed Tatkal tickets are non-refundable' },
         nonRefundableFees: nonRefundable,
-        netRefund: 0,
+        netRefund,
         message: 'Confirmed Tatkal tickets are non-refundable as per IRCTC rules.'
       });
       return;
@@ -102,6 +122,9 @@ export default function IRCTCRefundCalculator() {
 
       const netRefund = Math.max(0, fare - totalDeduction);
 
+      // Celebration trigger
+      if ((netRefund / fare) * 100 >= 50) triggerCelebration();
+
       setResult({
         totalFare: fare,
         totalCancellationCharges: totalDeduction - nonRefundable,
@@ -114,6 +137,7 @@ export default function IRCTCRefundCalculator() {
       return;
     }
 
+    // Main CNF cancellation rules
     const minCharge = getMinCharge(travelClass);
 
     if (timeDiffHours > 48) {
@@ -136,6 +160,12 @@ export default function IRCTCRefundCalculator() {
 
     totalDeduction = (cancellationChargePerPassenger * numPassengers) + nonRefundable;
     const netRefund = Math.max(0, fare - totalDeduction);
+
+    // 🎉 Celebration when refund ≥ 50%
+    const refundPercentage = (netRefund / fare) * 100;
+    if (refundPercentage >= 50) {
+      triggerCelebration();
+    }
 
     breakdown.minCharge = minCharge;
     breakdown.perPassengerCharge = cancellationChargePerPassenger.toFixed(2);
