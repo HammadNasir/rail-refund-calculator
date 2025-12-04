@@ -1,6 +1,11 @@
 import React, { useState, useRef } from 'react';
 import confetti from 'canvas-confetti';
 import { Calculator, Info, AlertCircle, IndianRupee, Clock, Users, Train, Shield } from 'lucide-react';
+import { Routes, Route } from "react-router-dom";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 // Celebration function
 const triggerCelebration = () => {
@@ -221,6 +226,8 @@ export default function IRCTCRefundCalculator() {
   };
 
     return (
+      <Routes>
+  <Route path="/" element={
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-6 shadow-lg">
@@ -598,7 +605,23 @@ export default function IRCTCRefundCalculator() {
           <p>For official info, visit <a href="https://www.irctc.co.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:text-indigo-700 font-semibold underline">IRCTC Website</a></p>
           <p className="mt-2">© 2025 Rail Refund Calculator - A whocodes.in venture</p>
         </div>
+
+         {/* Minimal Navigation */}
+        <nav style={{ marginTop: "20px", textAlign: "center" }}>
+          <a href="/" style={{ margin: "0 10px" }}>Home</a>
+          <a href="/privacy" style={{ margin: "0 10px" }}>Privacy Policy</a>
+          <a href="/terms" style={{ margin: "0 10px" }}>Terms</a>
+          <a href="/about" style={{ margin: "0 10px" }}>About</a>
+          <a href="/contact" style={{ margin: "0 10px" }}>Contact</a>
+        </nav>
+        
       </div>
     </div>
+    } />
+  <Route path="/privacy" element={<PrivacyPolicy />} />
+  <Route path="/terms" element={<Terms />} />
+  <Route path="/about" element={<About />} />
+  <Route path="/contact" element={<Contact />} />
+</Routes>
   );
 }
