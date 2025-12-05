@@ -572,6 +572,60 @@ export default function IRCTCRefundCalculator() {
           </div>
         )}
 
+        <div className="mt-14 bg-white rounded-xl shadow-md p-8 space-y-6">
+  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+    Indian Railways Ticket Refund Rules Guide (2025 Updated)
+  </h2>
+  <p className="text-gray-700 leading-relaxed">
+    Indian Railway refunds depend on ticket status, timing of cancellation,
+    and travel class. This calculator gives you an accurate estimate based on
+    official rules defined in the Railway Passengers (Cancellation of Tickets
+    and Refund of Fare) Rules, 2015.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-6">Tatkal Refund Rules</h3>
+  <ul className="list-disc pl-6 text-gray-700 space-y-2">
+    <li>No refund for confirmed Tatkal tickets.</li>
+    <li>RAC/WL Tatkal tickets are refunded after cancellation as per normal rules.</li>
+    <li>Full refund allowed if train is cancelled by Indian Railways.</li>
+  </ul>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-6">RAC & Waitlisted Refund Rules</h3>
+  <ul className="list-disc pl-6 text-gray-700 space-y-2">
+    <li>RAC tickets: refund available if cancelled before chart preparation.</li>
+    <li>Waitlisted tickets: refund is automatic if not confirmed after charting.</li>
+  </ul>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-6">Time-Based Cancellation Charges</h3>
+  <p className="text-gray-700 leading-relaxed">
+    Cancellation fees vary based on how early the ticket is cancelled before the
+    train's departure. Deduction ranges from minimum charges to 100% forfeiture.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-6">Refund Timeline</h3>
+  <p className="text-gray-700 leading-relaxed">
+    Refund is typically credited back to the source account within 3-7 working
+    days for online payments. Bank turnaround time may vary.
+  </p>
+
+  <h3 className="text-xl font-semibold text-gray-900 mt-8">Frequently Asked Questions (FAQ)</h3>
+  <div className="space-y-4">
+    <p><strong>1. Do I get a refund if my ticket remains WL?</strong><br />
+      Yes. If WL status persists after chart preparation, a full refund is automatically processed.
+    </p>
+    <p><strong>2. Do I get a refund if the train is cancelled?</strong><br />
+      Yes. Full fare refund is initiated by Indian Railways for all ticket types.
+    </p>
+    <p><strong>3. Do I get a refund for Tatkal tickets?</strong><br />
+      Confirmed Tatkal tickets do not get a refund except in special circumstances like train cancellation.
+    </p>
+  </div>
+
+  <p className="text-xs text-gray-500 mt-10">
+    📌 This is a simplified guide for easy understanding. Always verify with official IRCTC sources for the latest updates.
+  </p>
+</div>
+
         {/* Comprehensive Disclaimer */}
         <div className="mt-8 bg-gradient-to-r from-gray-50 to-gray-100 border-2 border-gray-300 rounded-xl p-6 shadow-sm">
           <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
