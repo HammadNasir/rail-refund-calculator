@@ -619,12 +619,67 @@ export default function IRCTCRefundCalculator() {
     <p><strong>3. Do I get a refund for Tatkal tickets?</strong><br />
       Confirmed Tatkal tickets do not get a refund except in special circumstances like train cancellation.
     </p>
+
+     <p><strong>4. What if the train is late by more than 3 hours?</strong><br/>
+    Full refund is allowed under IRCTC rules if an e-ticket passenger chooses not to travel due to train running over 3 hours late.
+  </p>
+
+  <p><strong>5. What if a ticket is partially confirmed?</strong><br/>
+    The confirmed portion is refunded based on normal deduction. The waitlisted part is refunded in full.
+  </p>
+
+  <p><strong>6. How long does a refund take?</strong><br/>
+    Typically 3-7 banking days for online tickets. UPI refunds may be faster.
+  </p>
+
+  <p><strong>7. Is GST refundable?</strong><br/>
+    GST paid on services is <strong>not refunded</strong> on ticket cancellations.
+  </p>
   </div>
+
+  <p className="mt-4 text-gray-700 leading-relaxed">
+  Rail Refund Calculator helps passengers quickly estimate their train ticket
+  cancellation refunds according to the latest IRCTC rules. Many travelers are
+  unaware of how refund deductions work for different ticket types such as
+  Confirmed, RAC, and Waitlisted. This tool simplifies the rules into an easy
+  calculation so you can know your expected refund before canceling a ticket.
+  We update this site regularly with the latest refund policies from Indian
+  Railways for accurate results.
+</p>
 
   <p className="text-xs text-gray-500 mt-10">
     📌 This is a simplified guide for easy understanding. Always verify with official IRCTC sources for the latest updates.
   </p>
+  <p class="text-sm text-gray-600 mt-8">
+  Learn more: 
+  <a href="/terms"> Terms & Conditions</a> • 
+  <a href="/privacy"> Privacy Policy</a> • 
+  <a href="/contact"> Contact</a>
+</p>
 </div>
+
+<div className="mt-12 bg-gray-50 p-6 rounded-lg">
+  <h3 className="text-xl font-semibold mb-4 text-gray-900">
+    IRCTC Ticket Cancellation Refund Examples
+  </h3>
+  <p className="text-gray-700 mb-3">
+    Example 1: A confirmed Sleeper Class ticket cancelled 24 hours before departure.
+  </p>
+  <ul className="list-disc pl-6 text-gray-700 mb-4">
+    <li>Total Fare: ₹350</li>
+    <li>Cancellation Charge: ₹60 per passenger</li>
+    <li><strong>Refund: ₹290</strong></li>
+  </ul>
+
+  <p className="text-gray-700 mb-3">
+    Example 2: An RAC ticket cancelled 2 hours before departure.
+  </p>
+  <ul className="list-disc pl-6 text-gray-700">
+    <li>Minimum cancellation charges apply</li>
+    <li><strong>Refund: ₹60 deducted from fare</strong></li>
+  </ul>
+</div>
+
 
         {/* Comprehensive Disclaimer */}
         <div className="mt-8 bg-gradient-to-r from-gray-50 to-gray-100 border-2 border-gray-300 rounded-xl p-6 shadow-sm">
