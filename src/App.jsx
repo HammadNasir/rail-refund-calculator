@@ -6,6 +6,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import CalculatorPage from "./pages/Calculator";
 
 // Celebration function
 const triggerCelebration = () => {
@@ -226,8 +227,8 @@ export default function IRCTCRefundCalculator() {
   };
 
     return (
-      <Routes>
-  <Route path="/" element={
+  //     <Routes>
+  // <Route path="/calculator" element={
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-6 shadow-lg">
@@ -572,114 +573,113 @@ export default function IRCTCRefundCalculator() {
           </div>
         )}
 
-        <div className="mt-14 bg-white rounded-xl shadow-md p-8 space-y-6">
-  <h2 className="text-2xl font-bold text-gray-900 mb-4">
-    Indian Railways Ticket Refund Rules Guide (2025 Updated)
-  </h2>
-  <p className="text-gray-700 leading-relaxed">
-    Indian Railway refunds depend on ticket status, timing of cancellation,
-    and travel class. This calculator gives you an accurate estimate based on
-    official rules defined in the Railway Passengers (Cancellation of Tickets
-    and Refund of Fare) Rules, 2015.
-  </p>
+              {/* <div className="mt-14 bg-white rounded-xl shadow-md p-8 space-y-6">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          Indian Railways Ticket Refund Rules Guide (2025 Updated)
+        </h2>
+        <p className="text-gray-700 leading-relaxed">
+          Indian Railway refunds depend on ticket status, timing of cancellation,
+          and travel class. This calculator gives you an accurate estimate based on
+          official rules defined in the Railway Passengers (Cancellation of Tickets
+          and Refund of Fare) Rules, 2015.
+        </p>
 
-  <h3 className="text-xl font-semibold text-gray-900 mt-6">Tatkal Refund Rules</h3>
-  <ul className="list-disc pl-6 text-gray-700 space-y-2">
-    <li>No refund for confirmed Tatkal tickets.</li>
-    <li>RAC/WL Tatkal tickets are refunded after cancellation as per normal rules.</li>
-    <li>Full refund allowed if train is cancelled by Indian Railways.</li>
-  </ul>
+        <h3 className="text-xl font-semibold text-gray-900 mt-6">Tatkal Refund Rules</h3>
+        <ul className="list-disc pl-6 text-gray-700 space-y-2">
+          <li>No refund for confirmed Tatkal tickets.</li>
+          <li>RAC/WL Tatkal tickets are refunded after cancellation as per normal rules.</li>
+          <li>Full refund allowed if train is cancelled by Indian Railways.</li>
+        </ul>
 
-  <h3 className="text-xl font-semibold text-gray-900 mt-6">RAC & Waitlisted Refund Rules</h3>
-  <ul className="list-disc pl-6 text-gray-700 space-y-2">
-    <li>RAC tickets: refund available if cancelled before chart preparation.</li>
-    <li>Waitlisted tickets: refund is automatic if not confirmed after charting.</li>
-  </ul>
+        <h3 className="text-xl font-semibold text-gray-900 mt-6">RAC & Waitlisted Refund Rules</h3>
+        <ul className="list-disc pl-6 text-gray-700 space-y-2">
+          <li>RAC tickets: refund available if cancelled before chart preparation.</li>
+          <li>Waitlisted tickets: refund is automatic if not confirmed after charting.</li>
+        </ul>
 
-  <h3 className="text-xl font-semibold text-gray-900 mt-6">Time-Based Cancellation Charges</h3>
-  <p className="text-gray-700 leading-relaxed">
-    Cancellation fees vary based on how early the ticket is cancelled before the
-    train's departure. Deduction ranges from minimum charges to 100% forfeiture.
-  </p>
+        <h3 className="text-xl font-semibold text-gray-900 mt-6">Time-Based Cancellation Charges</h3>
+        <p className="text-gray-700 leading-relaxed">
+          Cancellation fees vary based on how early the ticket is cancelled before the
+          train's departure. Deduction ranges from minimum charges to 100% forfeiture.
+        </p>
 
-  <h3 className="text-xl font-semibold text-gray-900 mt-6">Refund Timeline</h3>
-  <p className="text-gray-700 leading-relaxed">
-    Refund is typically credited back to the source account within 3-7 working
-    days for online payments. Bank turnaround time may vary.
-  </p>
+        <h3 className="text-xl font-semibold text-gray-900 mt-6">Refund Timeline</h3>
+        <p className="text-gray-700 leading-relaxed">
+          Refund is typically credited back to the source account within 3-7 working
+          days for online payments. Bank turnaround time may vary.
+        </p>
 
-  <h3 className="text-xl font-semibold text-gray-900 mt-8">Frequently Asked Questions (FAQ)</h3>
-  <div className="space-y-4">
-    <p><strong>1. Do I get a refund if my ticket remains WL?</strong><br />
-      Yes. If WL status persists after chart preparation, a full refund is automatically processed.
-    </p>
-    <p><strong>2. Do I get a refund if the train is cancelled?</strong><br />
-      Yes. Full fare refund is initiated by Indian Railways for all ticket types.
-    </p>
-    <p><strong>3. Do I get a refund for Tatkal tickets?</strong><br />
-      Confirmed Tatkal tickets do not get a refund except in special circumstances like train cancellation.
-    </p>
+        <h3 className="text-xl font-semibold text-gray-900 mt-8">Frequently Asked Questions (FAQ)</h3>
+        <div className="space-y-4">
+          <p><strong>1. Do I get a refund if my ticket remains WL?</strong><br />
+            Yes. If WL status persists after chart preparation, a full refund is automatically processed.
+          </p>
+          <p><strong>2. Do I get a refund if the train is cancelled?</strong><br />
+            Yes. Full fare refund is initiated by Indian Railways for all ticket types.
+          </p>
+          <p><strong>3. Do I get a refund for Tatkal tickets?</strong><br />
+            Confirmed Tatkal tickets do not get a refund except in special circumstances like train cancellation.
+          </p>
 
-     <p><strong>4. What if the train is late by more than 3 hours?</strong><br/>
-    Full refund is allowed under IRCTC rules if an e-ticket passenger chooses not to travel due to train running over 3 hours late.
-  </p>
+          <p><strong>4. What if the train is late by more than 3 hours?</strong><br/>
+          Full refund is allowed under IRCTC rules if an e-ticket passenger chooses not to travel due to train running over 3 hours late.
+        </p>
 
-  <p><strong>5. What if a ticket is partially confirmed?</strong><br/>
-    The confirmed portion is refunded based on normal deduction. The waitlisted part is refunded in full.
-  </p>
+        <p><strong>5. What if a ticket is partially confirmed?</strong><br/>
+          The confirmed portion is refunded based on normal deduction. The waitlisted part is refunded in full.
+        </p>
 
-  <p><strong>6. How long does a refund take?</strong><br/>
-    Typically 3-7 banking days for online tickets. UPI refunds may be faster.
-  </p>
+        <p><strong>6. How long does a refund take?</strong><br/>
+          Typically 3-7 banking days for online tickets. UPI refunds may be faster.
+        </p>
 
-  <p><strong>7. Is GST refundable?</strong><br/>
-    GST paid on services is <strong>not refunded</strong> on ticket cancellations.
-  </p>
-  </div>
+        <p><strong>7. Is GST refundable?</strong><br/>
+          GST paid on services is <strong>not refunded</strong> on ticket cancellations.
+        </p>
+        </div>
 
-  <p className="mt-4 text-gray-700 leading-relaxed">
-  Rail Refund Calculator helps passengers quickly estimate their train ticket
-  cancellation refunds according to the latest IRCTC rules. Many travelers are
-  unaware of how refund deductions work for different ticket types such as
-  Confirmed, RAC, and Waitlisted. This tool simplifies the rules into an easy
-  calculation so you can know your expected refund before canceling a ticket.
-  We update this site regularly with the latest refund policies from Indian
-  Railways for accurate results.
-</p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+        Rail Refund Calculator helps passengers quickly estimate their train ticket
+        cancellation refunds according to the latest IRCTC rules. Many travelers are
+        unaware of how refund deductions work for different ticket types such as
+        Confirmed, RAC, and Waitlisted. This tool simplifies the rules into an easy
+        calculation so you can know your expected refund before canceling a ticket.
+        We update this site regularly with the latest refund policies from Indian
+        Railways for accurate results.
+      </p>
 
-  <p className="text-xs text-gray-500 mt-10">
-    📌 This is a simplified guide for easy understanding. Always verify with official IRCTC sources for the latest updates.
-  </p>
-  <p class="text-sm text-gray-600 mt-8">
-  Learn more: 
-  <a href="/terms"> Terms & Conditions</a> • 
-  <a href="/privacy"> Privacy Policy</a> • 
-  <a href="/contact"> Contact</a>
-</p>
-</div>
+        <p className="text-xs text-gray-500 mt-10">
+          📌 This is a simplified guide for easy understanding. Always verify with official IRCTC sources for the latest updates.
+        </p>
+        <p class="text-sm text-gray-600 mt-8">
+        Learn more: 
+        <a href="/terms"> Terms & Conditions</a> • 
+        <a href="/privacy"> Privacy Policy</a> • 
+        <a href="/contact"> Contact</a>
+      </p>
+      </div>
 
-<div className="mt-12 bg-gray-50 p-6 rounded-lg">
-  <h3 className="text-xl font-semibold mb-4 text-gray-900">
-    IRCTC Ticket Cancellation Refund Examples
-  </h3>
-  <p className="text-gray-700 mb-3">
-    Example 1: A confirmed Sleeper Class ticket cancelled 24 hours before departure.
-  </p>
-  <ul className="list-disc pl-6 text-gray-700 mb-4">
-    <li>Total Fare: ₹350</li>
-    <li>Cancellation Charge: ₹60 per passenger</li>
-    <li><strong>Refund: ₹290</strong></li>
-  </ul>
+      <div className="mt-12 bg-gray-50 p-6 rounded-lg">
+        <h3 className="text-xl font-semibold mb-4 text-gray-900">
+          IRCTC Ticket Cancellation Refund Examples
+        </h3>
+        <p className="text-gray-700 mb-3">
+          Example 1: A confirmed Sleeper Class ticket cancelled 24 hours before departure.
+        </p>
+        <ul className="list-disc pl-6 text-gray-700 mb-4">
+          <li>Total Fare: ₹350</li>
+          <li>Cancellation Charge: ₹60 per passenger</li>
+          <li><strong>Refund: ₹290</strong></li>
+        </ul>
 
-  <p className="text-gray-700 mb-3">
-    Example 2: An RAC ticket cancelled 2 hours before departure.
-  </p>
-  <ul className="list-disc pl-6 text-gray-700">
-    <li>Minimum cancellation charges apply</li>
-    <li><strong>Refund: ₹60 deducted from fare</strong></li>
-  </ul>
-</div>
-
+        <p className="text-gray-700 mb-3">
+          Example 2: An RAC ticket cancelled 2 hours before departure.
+        </p>
+        <ul className="list-disc pl-6 text-gray-700">
+          <li>Minimum cancellation charges apply</li>
+          <li><strong>Refund: ₹60 deducted from fare</strong></li>
+        </ul>
+      </div> */}
 
         {/* Comprehensive Disclaimer */}
         <div className="mt-8 bg-gradient-to-r from-gray-50 to-gray-100 border-2 border-gray-300 rounded-xl p-6 shadow-sm">
@@ -716,21 +716,24 @@ export default function IRCTCRefundCalculator() {
         </div>
 
          {/* Minimal Navigation */}
-        <nav style={{ marginTop: "20px", textAlign: "center" }}>
+        {/* <nav style={{ marginTop: "20px", textAlign: "center" }}>
           <a href="/" style={{ margin: "0 10px" }}>Home</a>
+          <a href="/calculator" style={{ margin: "0 10px" }}>CalculatorPage</a>
           <a href="/privacy" style={{ margin: "0 10px" }}>Privacy Policy</a>
           <a href="/terms" style={{ margin: "0 10px" }}>Terms</a>
           <a href="/about" style={{ margin: "0 10px" }}>About</a>
           <a href="/contact" style={{ margin: "0 10px" }}>Contact</a>
-        </nav>
+        </nav> */}
         
       </div>
     </div>
-    } />
-  <Route path="/privacy" element={<PrivacyPolicy />} />
-  <Route path="/terms" element={<Terms />} />
-  <Route path="/about" element={<About />} />
-  <Route path="/contact" element={<Contact />} />
-</Routes>
+//     } />
+//   <Route path="/" element={<Home />} />
+//   <Route path="/calculator" element={<CalculatorPage />} />
+//   <Route path="/privacy" element={<PrivacyPolicy />} />
+//   <Route path="/terms" element={<Terms />} />
+//   <Route path="/about" element={<About />} />
+//   <Route path="/contact" element={<Contact />} />
+// </Routes>
   );
 }
