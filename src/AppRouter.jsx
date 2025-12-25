@@ -15,8 +15,6 @@ export default function AppRouter() {
       <Route path="/terms" element={<Terms />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      {/* Catch-all route for 404 - Optional but recommended */}
-      <Route path="*" element={<Home />} />
     </Routes>
   );
 }
